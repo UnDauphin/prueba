@@ -4,15 +4,6 @@ import plotly.express as px
 import pandas as pd
 import geopandas as gpd
 
-# ======================
-# 2. Cargar y limpiar datos
-# ======================
-df = pd.read_csv("Número_de_afiliados_por_departamento,_municipio_y_régimen_20250914.csv")
-
-# Limpieza del dataset
-df["NumPersonas"] = df["NumPersonas"].astype(str).str.replace('.', '', regex=False).astype(int)
-df = df[df["Municipio"] != "NO APLICA"]
-
 # Agrupaciones por régimen
 df_C = pd.read_csv("datos_contributivo.csv", dtype={"CodDepto":"str"})
 df_S = pd.read_csv("datos_subsidiado.csv", dtype={"CodDepto":"str"})
@@ -139,6 +130,7 @@ def actualizar_mapa(regimen, depto, color_scale):
 # ======================
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 
 

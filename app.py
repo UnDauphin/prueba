@@ -1,4 +1,5 @@
 import dash
+import os
 from dash import dcc, html
 import plotly.express as px
 import pandas as pd
@@ -126,7 +127,8 @@ app.layout = html.Div([
 # 4. Correr la app
 # ======================
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 8050))  # Render asigna el puerto dinámicamente
+    app.run(host='0.0.0.0', port=port, debug=False)
 
 
 
